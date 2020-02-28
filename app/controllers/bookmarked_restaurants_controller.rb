@@ -1,0 +1,2 @@
+class BookmarkedRestaurantsController < ApplicationController
+end
