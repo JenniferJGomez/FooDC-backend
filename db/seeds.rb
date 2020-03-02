@@ -3,6 +3,7 @@ require 'json'
 require 'byebug'
 
 Restaurant.destroy_all
+BookmarkedRestaurant.destroy_all
 
 key = Rails.application.credentials.yelp[:api_key]
 
@@ -28,5 +29,7 @@ end
 
 User.create(name: "Jenny", username: "JennyFromTheBlock")
 
-BookmarkedRestaurant.create(user_id: 1, restaurant_id: 65)
+BookmarkedRestaurant.create(user_id: 1, restaurant_id: 222)
+BookmarkedRestaurant.create(user_id: 1, restaurant_id: 227)
+
 

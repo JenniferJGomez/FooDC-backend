@@ -2,7 +2,10 @@ class RestaurantsController < ApplicationController
 
   def index
     all_restaurants = Restaurant.all
-    render json: all_restaurants.to_json()
+    render json: all_restaurants.to_json(
+      :include => {:users =>
+        {:except => [:created_at, :updated_at]}}
+    )
 
   end
 
