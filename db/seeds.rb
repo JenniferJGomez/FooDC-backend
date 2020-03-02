@@ -11,6 +11,7 @@ response_yelp = RestClient.get("https://api.yelp.com/v3/businesses/search?catego
 response = JSON.parse(response_yelp)
 
 response_array = response["businesses"]
+# byebug
 
 response_array.each do |restaurant|
     name = restaurant["name"]
@@ -20,7 +21,12 @@ response_array.each do |restaurant|
     rating = restaurant["rating"]
     categories = restaurant["categories"][0]["title"]
     price = restaurant["price"]
+    display_address = restaurant["location"]["display_address"][0]
 
-    Restaurant.create(name: name, img_url: image_url, url: url, display_phone: display_phone, rating: rating, category: categories, price: price)
+    Restaurant.create(name: name, img_url: image_url, url: url, display_phone: display_phone, rating: rating, category: categories, price: price, display_address: display_address)
 end
+
+User.create(name: "Jenny", username: "JennyFromTheBlock")
+
+BookmarkedRestaurant.create(user_id: 1, restaurant_id: 65)
 

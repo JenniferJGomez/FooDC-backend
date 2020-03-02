@@ -8,6 +8,7 @@ class CreateRestaurants < ActiveRecord::Migration[6.0]
       t.string :category
       t.float :rating
       t.string :price
+      t.string :display_address
 
       t.timestamps
     end
