@@ -13,4 +13,15 @@ class RestaurantsController < ApplicationController
     restaurant = Restaurant.find(params[:id])
     render json: restaurant.to_json()
   end
+
+  def bookmarks
+    bookmark = BookmarkedRestaurant.find_or_create_by(user_id: params[:user_id], restaurant_id: params[:restaurant_id])
+    render json: bookmark
+  end
+
+  def destroy
+    bookmark = BookmarkedRestaurant.find_by(user_id: params[:user_id], restaurant_id: params[:restaurant_id])
+    BookmarkedRestaurant.destroy(bookmark.id)
+  end
+
 end

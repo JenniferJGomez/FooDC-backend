@@ -4,10 +4,11 @@ require 'byebug'
 
 Restaurant.destroy_all
 BookmarkedRestaurant.destroy_all
+User.destroy_all
 
 key = Rails.application.credentials.yelp[:api_key]
 
-response_yelp = RestClient.get("https://api.yelp.com/v3/businesses/search?categories=restaurants&location=Washington D.C.", {"Authorization" => "Bearer #{key}"})
+response_yelp = RestClient.get("https://api.yelp.com/v3/businesses/search?categories=restaurants&location=Washington D.C.&limit=50", {"Authorization" => "Bearer #{key}"})
 
 response = JSON.parse(response_yelp)
 
@@ -29,7 +30,6 @@ end
 
 User.create(name: "Jenny", username: "JennyFromTheBlock")
 
-BookmarkedRestaurant.create(user_id: 1, restaurant_id: 222)
-BookmarkedRestaurant.create(user_id: 1, restaurant_id: 227)
+
 
 
