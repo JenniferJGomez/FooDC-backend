@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :reviews
+  resources :reviews, only: [:index]
   resources :restaurants, only: [:index, :show]
   resources :users, only: [:show]
   post '/bookmarked_restaurants', to: 'restaurants#bookmarks'
